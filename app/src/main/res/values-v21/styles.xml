@@ -1,0 +1,18 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<resources>-->
+
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+        <!--<item name="android:navigationBarColor">@android:color/transparent</item>-->
+        <!--<item name="android:windowTranslucentNavigation">true</item>-->
+        <!--<item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
+
+    <!--</style>-->
+<!--</resources>-->
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#301616</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+</resources>

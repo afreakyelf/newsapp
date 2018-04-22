@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "101073067742",
+    "firebase_url": "https://newsly-e074e.firebaseio.com",
+    "project_id": "newsly-e074e",
+    "storage_bucket": "newsly-e074e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101073067742:android:ca44087ccbd12c55",
+        "android_client_info": {
+          "package_name": "com.example.student.newsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101073067742-mln2pjjsecahjt1i0m4ecailgkm3uqpq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.student.newsapp",
+            "certificate_hash": "c2a9ba9f4e94757a1d1680f780b36cd5f8a76ea1"
+          }
+        },
+        {
+          "client_id": "101073067742-o10dv6bp5i4i2sm333tjoiive7duh98i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCepVXzvx9Htr7TzUR1t0RtgCX2lSjXL_w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101073067742-o10dv6bp5i4i2sm333tjoiive7duh98i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

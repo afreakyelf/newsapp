@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:id="@+id/rlbookmarks"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<android.support.v7.widget.Toolbar
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/toolbar"
+    app:titleTextColor="#fff"
+    app:theme="@style/ToolbarStyle"
+    android:background="#452727"
+/>
+
+    <TextView
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="wrap_content"
+        android:id="@+id/nobookmarks"
+        android:textColor="#452727"
+        android:text="No Bookmarks Added Yet!"
+        android:textSize="@dimen/_25sdp"
+        android:gravity="center"
+       android:layout_below="@+id/toolbar"
+android:layout_centerHorizontal="true"
+        android:layout_marginTop="166dp" />
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:indeterminate="true"
+
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="156dp" />
+
+
+    <android.support.v7.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/rv"
+    android:layout_below="@+id/toolbar"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+/>
+</RelativeLayout>

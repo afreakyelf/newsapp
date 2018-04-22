@@ -1,0 +1,983 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 145752064 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2627), pid=4359, tid=0x00007f19a81f1700
+#
+# JRE version: OpenJDK Runtime Environment (8.0_112-b06) (build 1.8.0_112-release-b06)
+# Java VM: OpenJDK 64-Bit Server VM (25.112-b06 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f19b8077800):  VMThread [stack: 0x00007f19a80f1000,0x00007f19a81f2000] [id=4367]
+
+Stack: [0x00007f19a80f1000,0x00007f19a81f2000],  sp=0x00007f19a81f04d0,  free space=1021k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x9e465d]  VMError::report_and_die()+0x15d
+V  [libjvm.so+0x4b6ada]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x8a
+V  [libjvm.so+0x84c860]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0xf0
+V  [libjvm.so+0x84737f]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x1f
+V  [libjvm.so+0x8bd3db]  PSVirtualSpace::expand_by(unsigned long)+0x5b
+V  [libjvm.so+0x8ae1bb]  PSOldGen::expand_by(unsigned long) [clone .part.109]+0x1b
+V  [libjvm.so+0x8ae37b]  PSOldGen::expand(unsigned long) [clone .part.111]+0xdb
+V  [libjvm.so+0x8aec58]  PSOldGen::resize(unsigned long)+0x188
+V  [libjvm.so+0x8b426c]  PSParallelCompact::invoke_no_policy(bool)+0x97c
+V  [libjvm.so+0x8bb37d]  PSScavenge::invoke()+0x17d
+V  [libjvm.so+0x86fcf3]  ParallelScavengeHeap::failed_mem_allocate(unsigned long)+0x63
+V  [libjvm.so+0x9e6124]  VM_ParallelGCFailedAllocation::doit()+0x84
+V  [libjvm.so+0x9ea537]  VM_Operation::evaluate()+0x47
+V  [libjvm.so+0x9e8ff8]  VMThread::evaluate_operation(VM_Operation*)+0x2c8
+V  [libjvm.so+0x9e9479]  VMThread::loop()+0x219
+V  [libjvm.so+0x9e98c2]  VMThread::run()+0x72
+V  [libjvm.so+0x849c82]  java_start(Thread*)+0xf2
+
+VM_Operation (0x00007f193fa27bb0): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00007f1930063800
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f193006a000 JavaThread "pool-5-thread-4" [_thread_blocked, id=4453, stack(0x00007f193f525000,0x00007f193f626000)]
+  0x00007f1930068800 JavaThread "pool-5-thread-3" [_thread_blocked, id=4452, stack(0x00007f193f626000,0x00007f193f727000)]
+  0x00007f1930066800 JavaThread "pool-5-thread-2" [_thread_blocked, id=4451, stack(0x00007f193f727000,0x00007f193f828000)]
+  0x00007f1930065000 JavaThread "pool-6-thread-1" [_thread_blocked, id=4449, stack(0x00007f193f828000,0x00007f193f929000)]
+  0x00007f1930063800 JavaThread "pool-5-thread-1" [_thread_blocked, id=4448, stack(0x00007f193f929000,0x00007f193fa2a000)]
+  0x00007f195d03e000 JavaThread "pool-3-thread-1" [_thread_blocked, id=4446, stack(0x00007f193faff000,0x00007f193fc00000)]
+  0x00007f195d0ba800 JavaThread "Cache update executor" [_thread_blocked, id=4433, stack(0x00007f1970022000,0x00007f1970123000)]
+  0x00007f195c538800 JavaThread "pool-2-thread-1" [_thread_blocked, id=4427, stack(0x00007f1970f36000,0x00007f1971037000)]
+  0x00007f195cb3c000 JavaThread "File lock request listener" [_thread_in_native, id=4424, stack(0x00007f19717e1000,0x00007f19718e2000)]
+  0x00007f195cabd000 JavaThread "process reaper" daemon [_thread_blocked, id=4423, stack(0x00007f19718e2000,0x00007f197191b000)]
+  0x00007f19b8474800 JavaThread "pool-1-thread-1" [_thread_blocked, id=4421, stack(0x00007f1972395000,0x00007f1972496000)]
+  0x00007f195c008800 JavaThread "Stdin handler" [_thread_blocked, id=4420, stack(0x00007f1972496000,0x00007f1972597000)]
+  0x00007f195c007000 JavaThread "Asynchronous log dispatcher for DefaultDaemonConnection: socket connection from /127.0.0.1:39858 to /127.0.0.1:40040" [_thread_blocked, id=4419, stack(0x00007f1972597000,0x00007f1972698000)]
+  0x00007f1960029800 JavaThread "Daemon worker" [_thread_blocked, id=4416, stack(0x00007f1972698000,0x00007f1972799000)]
+  0x00007f1960028800 JavaThread "Cancel handler" [_thread_blocked, id=4415, stack(0x00007f1972799000,0x00007f197289a000)]
+  0x00007f1960007800 JavaThread "Handler for socket connection from /127.0.0.1:39858 to /127.0.0.1:40040" [_thread_in_native, id=4414, stack(0x00007f1972a9a000,0x00007f1972b9b000)]
+  0x00007f1968015800 JavaThread "Daemon" [_thread_blocked, id=4413, stack(0x00007f1972b9b000,0x00007f1972c9c000)]
+  0x00007f19b8c2b800 JavaThread "Incoming local TCP Connector on port 39858" [_thread_in_native, id=4412, stack(0x00007f1972ea3000,0x00007f1972fa4000)]
+  0x00007f19b80bf800 JavaThread "Service Thread" daemon [_thread_blocked, id=4376, stack(0x00007f19a0621000,0x00007f19a0722000)]
+  0x00007f19b80bc800 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=4375, stack(0x00007f19a0722000,0x00007f19a0823000)]
+  0x00007f19b80ba800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=4374, stack(0x00007f19a0823000,0x00007f19a0924000)]
+  0x00007f19b80b7800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=4373, stack(0x00007f19a0924000,0x00007f19a0a25000)]
+  0x00007f19b80b6800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=4372, stack(0x00007f19a0a25000,0x00007f19a0b26000)]
+  0x00007f19b8083800 JavaThread "Finalizer" daemon [_thread_blocked, id=4369, stack(0x00007f19a0dfe000,0x00007f19a0eff000)]
+  0x00007f19b807f000 JavaThread "Reference Handler" daemon [_thread_blocked, id=4368, stack(0x00007f19a0eff000,0x00007f19a1000000)]
+  0x00007f19b800a000 JavaThread "main" [_thread_blocked, id=4362, stack(0x00007f19c09f0000,0x00007f19c0af1000)]
+
+Other Threads:
+=>0x00007f19b8077800 VMThread [stack: 0x00007f19a80f1000,0x00007f19a81f2000] [id=4367]
+  0x00007f19b80c2000 WatcherThread [stack: 0x00007f19a0520000,0x00007f19a0621000] [id=4377]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007f19b8005df0] ExpandHeap_lock - owner thread: 0x00007f19b8077800
+[0x00007f19b8006470] Threads_lock - owner thread: 0x00007f19b8077800
+[0x00007f19b8006970] Heap_lock - owner thread: 0x00007f1930063800
+
+Heap:
+ PSYoungGen      total 300032K, used 49538K [0x00000000e0000000, 0x00000000fba80000, 0x0000000100000000)
+  eden space 212480K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000ecf80000)
+  from space 87552K, 56% used [0x00000000f3a00000,0x00000000f6a60bb0,0x00000000f8f80000)
+  to   space 109056K, 0% used [0x00000000ecf80000,0x00000000ecf80000,0x00000000f3a00000)
+ ParOldGen       total 373248K, used 373206K [0x00000000a0000000, 0x00000000b6c80000, 0x00000000e0000000)
+  object space 373248K, 99% used [0x00000000a0000000,0x00000000b6c75aa8,0x00000000b6c80000)
+ Metaspace       used 54015K, capacity 55698K, committed 55984K, reserved 1097728K
+  class space    used 7115K, capacity 7503K, committed 7600K, reserved 1048576K
+
+Card table byte_map: [0x00007f19bd581000,0x00007f19bd882000] byte_map_base: 0x00007f19bd081000
+
+Marking Bits: (ParMarkBitMap*) 0x00007f19bfebe340
+ Begin Bits: [0x00007f19a1000000, 0x00007f19a2800000)
+ End Bits:   [0x00007f19a2800000, 0x00007f19a4000000)
+
+Polling page: 0x00007f19c0b10000
+
+CodeCache: size=245760Kb used=30162Kb max_used=30173Kb free=215597Kb
+ bounds [0x00007f19a9000000, 0x00007f19aadc0000, 0x00007f19b8000000]
+ total_blobs=8695 nmethods=7944 adapters=664
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 57.528 Thread 0x00007f19b80ba800 9243       4       com.android.dx.ssa.back.SsaToRop::removePhiFunctions (83 bytes)
+Event: 57.531 Thread 0x00007f19b80bc800 9489       2       com.android.dx.cf.code.BytecodeArray$ConstantParserVisitor::clear (6 bytes)
+Event: 57.531 Thread 0x00007f19b80bc800 nmethod 9489 0x00007f19a95eee90 code [0x00007f19a95eefe0, 0x00007f19a95ef130]
+Event: 57.562 Thread 0x00007f19b80ba800 nmethod 9243 0x00007f19aad598d0 code [0x00007f19aad59ae0, 0x00007f19aad5a768]
+Event: 57.562 Thread 0x00007f19b80ba800 9369       4       com.android.dx.ssa.SCCP::<init> (142 bytes)
+Event: 57.581 Thread 0x00007f19b80ba800 nmethod 9369 0x00007f19a9873990 code [0x00007f19a9873b40, 0x00007f19a9874418]
+Event: 57.581 Thread 0x00007f19b80ba800 9490       4       java.util.concurrent.ConcurrentHashMap::get (162 bytes)
+Event: 57.582 Thread 0x00007f19b80bc800 9492       3       com.android.dx.ssa.back.FirstFitLocalCombiningAllocator::handleNormalUnassociated (99 bytes)
+Event: 57.584 Thread 0x00007f19b80bc800 nmethod 9492 0x00007f19aad577d0 code [0x00007f19aad57aa0, 0x00007f19aad58e38]
+Event: 57.584 Thread 0x00007f19b80bc800 9493       3       com.android.dx.cf.code.ByteCatchList::toTargetList (114 bytes)
+
+GC Heap History (10 events):
+Event: 52.853 GC heap after
+Heap after GC invocations=46 (full 6):
+ PSYoungGen      total 245248K, used 50620K [0x00000000e0000000, 0x00000000f3700000, 0x0000000100000000)
+  eden space 194560K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000ebe00000)
+  from space 50688K, 99% used [0x00000000ef700000,0x00000000f286f028,0x00000000f2880000)
+  to   space 58368K, 0% used [0x00000000ebe00000,0x00000000ebe00000,0x00000000ef700000)
+ ParOldGen       total 373248K, used 260005K [0x00000000a0000000, 0x00000000b6c80000, 0x00000000e0000000)
+  object space 373248K, 69% used [0x00000000a0000000,0x00000000afde9688,0x00000000b6c80000)
+ Metaspace       used 54006K, capacity 55698K, committed 55984K, reserved 1097728K
+  class space    used 7114K, capacity 7503K, committed 7600K, reserved 1048576K
+}
+Event: 53.829 GC heap before
+{Heap before GC invocations=47 (full 6):
+ PSYoungGen      total 245248K, used 245180K [0x00000000e0000000, 0x00000000f3700000, 0x0000000100000000)
+  eden space 194560K, 100% used [0x00000000e0000000,0x00000000ebe00000,0x00000000ebe00000)
+  from space 50688K, 99% used [0x00000000ef700000,0x00000000f286f028,0x00000000f2880000)
+  to   space 58368K, 0% used [0x00000000ebe00000,0x00000000ebe00000,0x00000000ef700000)
+ ParOldGen       total 373248K, used 260005K [0x00000000a0000000, 0x00000000b6c80000, 0x00000000e0000000)
+  object space 373248K, 69% used [0x00000000a0000000,0x00000000afde9688,0x00000000b6c80000)
+ Metaspace       used 54011K, capacity 55698K, committed 55984K, reserved 1097728K
+  class space    used 7114K, capacity 7503K, committed 7600K, reserved 1048576K
+Event: 54.093 GC heap after
+Heap after GC invocations=47 (full 6):
+ PSYoungGen      total 252928K, used 58356K [0x00000000e0000000, 0x00000000f6280000, 0x0000000100000000)
+  eden space 194560K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000ebe00000)
+  from space 58368K, 99% used [0x00000000ebe00000,0x00000000ef6fd0a0,0x00000000ef700000)
+  to   space 74240K, 0% used [0x00000000f1a00000,0x00000000f1a00000,0x00000000f6280000)
+ ParOldGen       total 373248K, used 279900K [0x00000000a0000000, 0x00000000b6c80000, 0x00000000e0000000)
+  object space 373248K, 74% used [0x00000000a0000000,0x00000000b1157288,0x00000000b6c80000)
+ Metaspace       used 54011K, capacity 55698K, committed 55984K, reserved 1097728K
+  class space    used 7114K, capacity 7503K, committed 7600K, reserved 1048576K
+}
+Event: 55.347 GC heap before
+{Heap before GC invocations=48 (full 6):
+ PSYoungGen      total 252928K, used 252916K [0x00000000e0000000, 0x00000000f6280000, 0x0000000100000000)
+  eden space 194560K, 100% used [0x00000000e0000000,0x00000000ebe00000,0x00000000ebe00000)
+  from space 58368K, 99% used [0x00000000ebe00000,0x00000000ef6fd0a0,0x00000000ef700000)
+  to   space 74240K, 0% used [0x00000000f1a00000,0x00000000f1a00000,0x00000000f6280000)
+ ParOldGen       total 373248K, used 279900K [0x00000000a0000000, 0x00000000b6c80000, 0x00000000e0000000)
+  object space 373248K, 74% used [0x00000000a0000000,0x00000000b1157288,0x00000000b6c80000)
+ Metaspace       used 54012K, capacity 55698K, committed 55984K, reserved 1097728K
+  class space    used 7114K, capacity 7503K, committed 7600K, reserved 1048576K
+Event: 55.656 GC heap after
+Heap after GC invocations=48 (full 6):
+ PSYoungGen      total 286720K, used 47577K [0x00000000e0000000, 0x00000000f6700000, 0x0000000100000000)
+  eden space 212480K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000ecf80000)
+  from space 74240K, 64% used [0x00000000f1a00000,0x00000000f4876428,0x00000000f6280000)
+  to   space 76288K, 0% used [0x00000000ecf80000,0x00000000ecf80000,0x00000000f1a00000)
+ ParOldGen       total 373248K, used 322009K [0x00000000a0000000, 0x00000000b6c80000, 0x00000000e0000000)
+  object space 373248K, 86% used [0x00000000a0000000,0x00000000b3a765e0,0x00000000b6c80000)
+ Metaspace       used 54012K, capacity 55698K, committed 55984K, reserved 1097728K
+  class space    used 7114K, capacity 7503K, committed 7600K, reserved 1048576K
+}
+Event: 56.614 GC heap before
+{Heap before GC invocations=49 (full 6):
+ PSYoungGen      total 286720K, used 260057K [0x00000000e0000000, 0x00000000f6700000, 0x0000000100000000)
+  eden space 212480K, 100% used [0x00000000e0000000,0x00000000ecf80000,0x00000000ecf80000)
+  from space 74240K, 64% used [0x00000000f1a00000,0x00000000f4876428,0x00000000f6280000)
+  to   space 76288K, 0% used [0x00000000ecf80000,0x00000000ecf80000,0x00000000f1a00000)
+ ParOldGen       total 373248K, used 322009K [0x00000000a0000000, 0x00000000b6c80000, 0x00000000e0000000)
+  object space 373248K, 86% used [0x00000000a0000000,0x00000000b3a765e0,0x00000000b6c80000)
+ Metaspace       used 54014K, capacity 55698K, committed 55984K, reserved 1097728K
+  class space    used 7115K, capacity 7503K, committed 7600K, reserved 1048576K
+Event: 56.734 GC heap after
+Heap after GC invocations=49 (full 6):
+ PSYoungGen      total 288768K, used 74985K [0x00000000e0000000, 0x00000000f8f80000, 0x0000000100000000)
+  eden space 212480K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000ecf80000)
+  from space 76288K, 98% used [0x00000000ecf80000,0x00000000f18ba5b8,0x00000000f1a00000)
+  to   space 87552K, 0% used [0x00000000f3a00000,0x00000000f3a00000,0x00000000f8f80000)
+ ParOldGen       total 373248K, used 322009K [0x00000000a0000000, 0x00000000b6c80000, 0x00000000e0000000)
+  object space 373248K, 86% used [0x00000000a0000000,0x00000000b3a765e0,0x00000000b6c80000)
+ Metaspace       used 54014K, capacity 55698K, committed 55984K, reserved 1097728K
+  class space    used 7115K, capacity 7503K, committed 7600K, reserved 1048576K
+}
+Event: 57.586 GC heap before
+{Heap before GC invocations=50 (full 6):
+ PSYoungGen      total 288768K, used 287465K [0x00000000e0000000, 0x00000000f8f80000, 0x0000000100000000)
+  eden space 212480K, 100% used [0x00000000e0000000,0x00000000ecf80000,0x00000000ecf80000)
+  from space 76288K, 98% used [0x00000000ecf80000,0x00000000f18ba5b8,0x00000000f1a00000)
+  to   space 87552K, 0% used [0x00000000f3a00000,0x00000000f3a00000,0x00000000f8f80000)
+ ParOldGen       total 373248K, used 322009K [0x00000000a0000000, 0x00000000b6c80000, 0x00000000e0000000)
+  object space 373248K, 86% used [0x00000000a0000000,0x00000000b3a765e0,0x00000000b6c80000)
+ Metaspace       used 54015K, capacity 55698K, committed 55984K, reserved 1097728K
+  class space    used 7115K, capacity 7503K, committed 7600K, reserved 1048576K
+Event: 57.837 GC heap after
+Heap after GC invocations=50 (full 6):
+ PSYoungGen      total 300032K, used 87524K [0x00000000e0000000, 0x00000000fba80000, 0x0000000100000000)
+  eden space 212480K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000ecf80000)
+  from space 87552K, 99% used [0x00000000f3a00000,0x00000000f8f79350,0x00000000f8f80000)
+  to   space 109056K, 0% used [0x00000000ecf80000,0x00000000ecf80000,0x00000000f3a00000)
+ ParOldGen       total 373248K, used 341979K [0x00000000a0000000, 0x00000000b6c80000, 0x00000000e0000000)
+  object space 373248K, 91% used [0x00000000a0000000,0x00000000b4df6c78,0x00000000b6c80000)
+ Metaspace       used 54015K, capacity 55698K, committed 55984K, reserved 1097728K
+  class space    used 7115K, capacity 7503K, committed 7600K, reserved 1048576K
+}
+Event: 57.837 GC heap before
+{Heap before GC invocations=51 (full 7):
+ PSYoungGen      total 300032K, used 87524K [0x00000000e0000000, 0x00000000fba80000, 0x0000000100000000)
+  eden space 212480K, 0% used [0x00000000e0000000,0x00000000e0000000,0x00000000ecf80000)
+  from space 87552K, 99% used [0x00000000f3a00000,0x00000000f8f79350,0x00000000f8f80000)
+  to   space 109056K, 0% used [0x00000000ecf80000,0x00000000ecf80000,0x00000000f3a00000)
+ ParOldGen       total 373248K, used 341979K [0x00000000a0000000, 0x00000000b6c80000, 0x00000000e0000000)
+  object space 373248K, 91% used [0x00000000a0000000,0x00000000b4df6c78,0x00000000b6c80000)
+ Metaspace       used 54015K, capacity 55698K, committed 55984K, reserved 1097728K
+  class space    used 7115K, capacity 7503K, committed 7600K, reserved 1048576K
+
+Deoptimization events (10 events):
+Event: 52.670 Thread 0x00007f1930066800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f19a9b82a2c method=java.util.concurrent.ConcurrentHashMap.transfer([Ljava/util/concurrent/ConcurrentHashMap$Node;[Ljava/util/concurrent/ConcurrentHashMap$Node;)V @ 277
+Event: 52.670 Thread 0x00007f1930063800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f19aa7d8c04 method=java.util.concurrent.ConcurrentHashMap.get(Ljava/lang/Object;)Ljava/lang/Object; @ 86
+Event: 52.671 Thread 0x00007f193006a000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f19a9b82a2c method=java.util.concurrent.ConcurrentHashMap.transfer([Ljava/util/concurrent/ConcurrentHashMap$Node;[Ljava/util/concurrent/ConcurrentHashMap$Node;)V @ 277
+Event: 52.686 Thread 0x00007f195d03e000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f19a9b82a2c method=java.util.concurrent.ConcurrentHashMap.transfer([Ljava/util/concurrent/ConcurrentHashMap$Node;[Ljava/util/concurrent/ConcurrentHashMap$Node;)V @ 277
+Event: 53.345 Thread 0x00007f1930068800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f19aac20ab4 method=com.android.dx.ssa.SsaMethod.makeExitBlock()V @ 103
+Event: 56.753 Thread 0x00007f1930066800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f19aad6c5ec method=com.android.dx.dex.code.RopTranslator.outputBlock(Lcom/android/dx/rop/code/BasicBlock;I)V @ 140
+Event: 56.790 Thread 0x00007f1930066800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f19aacd2c14 method=com.android.dx.cf.code.BytecodeArray.parseInstruction(ILcom/android/dx/cf/code/BytecodeArray$Visitor;)I @ 891
+Event: 56.790 Thread 0x00007f1930066800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f19aacd2c14 method=com.android.dx.cf.code.BytecodeArray.parseInstruction(ILcom/android/dx/cf/code/BytecodeArray$Visitor;)I @ 891
+Event: 57.113 Thread 0x00007f1930066800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f19aad5c1b4 method=com.android.dx.cf.code.Merger.mergeType(Lcom/android/dx/rop/type/TypeBearer;Lcom/android/dx/rop/type/TypeBearer;)Lcom/android/dx/rop/type/TypeBearer; @ 133
+Event: 57.565 Thread 0x00007f1930063800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f19aadab5f0 method=com.android.dx.ssa.InterferenceRegisterMapper.interferes(III)Z @ 69
+
+Internal exceptions (10 events):
+Event: 30.707 Thread 0x00007f1960029800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000e37d6f70) thrown at [/ssd/Android/AOSP-openjdk/external/jetbrains/jdk/hotspot/src/share/vm/prims/jni.cpp, line 1613]
+Event: 30.709 Thread 0x00007f1960029800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000e37e4810) thrown at [/ssd/Android/AOSP-openjdk/external/jetbrains/jdk/hotspot/src/share/vm/prims/jni.cpp, line 1613]
+Event: 30.729 Thread 0x00007f1960029800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000e3860b30) thrown at [/ssd/Android/AOSP-openjdk/external/jetbrains/jdk/hotspot/src/share/vm/prims/jni.cpp, line 1613]
+Event: 30.730 Thread 0x00007f1960029800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000e3879888) thrown at [/ssd/Android/AOSP-openjdk/external/jetbrains/jdk/hotspot/src/share/vm/prims/jni.cpp, line 1613]
+Event: 30.730 Thread 0x00007f1960029800 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x00000000e387b508) thrown at [/ssd/Android/AOSP-openjdk/external/jetbrains/jdk/hotspot/src/share/vm/prims/jni.cpp, line 1613]
+Event: 37.220 Thread 0x00007f1930063800 Implicit null exception at 0x00007f19aa499e62 to 0x00007f19aa499f5b
+Event: 37.503 Thread 0x00007f1930068800 Implicit null exception at 0x00007f19a9a52afe to 0x00007f19a9a53a29
+Event: 37.765 Thread 0x00007f193006a000 Implicit null exception at 0x00007f19aa4fcfe5 to 0x00007f19aa4fdbc9
+Event: 37.982 Thread 0x00007f1930068800 Implicit null exception at 0x00007f19aa5c1ecd to 0x00007f19aa5c20a9
+Event: 48.675 Thread 0x00007f195d03e000 Implicit null exception at 0x00007f19a9837dc3 to 0x00007f19a9838445
+
+Events (10 events):
+Event: 57.417 Thread 0x00007f1930063800 DEOPT PACKING pc=0x00007f19aa61666c sp=0x00007f193fa282e0
+Event: 57.418 Thread 0x00007f1930063800 DEOPT UNPACKING pc=0x00007f19a9047373 sp=0x00007f193fa27fe0 mode 0
+Event: 57.475 Thread 0x00007f1930066800 DEOPT PACKING pc=0x00007f19aa77fcdd sp=0x00007f193f825e80
+Event: 57.475 Thread 0x00007f1930066800 DEOPT UNPACKING pc=0x00007f19a9047373 sp=0x00007f193f825ce0 mode 0
+Event: 57.500 Thread 0x00007f1930066800 DEOPT PACKING pc=0x00007f19aa61666c sp=0x00007f193f8261e0
+Event: 57.500 Thread 0x00007f1930066800 DEOPT UNPACKING pc=0x00007f19a9047373 sp=0x00007f193f825ee0 mode 0
+Event: 57.565 Thread 0x00007f1930063800 Uncommon trap: trap_request=0xffffff65 fr.pc=0x00007f19aadab5f0
+Event: 57.565 Thread 0x00007f1930063800 DEOPT PACKING pc=0x00007f19aadab5f0 sp=0x00007f193fa28110
+Event: 57.565 Thread 0x00007f1930063800 DEOPT UNPACKING pc=0x00007f19a9004f69 sp=0x00007f193fa28008 mode 2
+Event: 57.585 Executing VM operation: ParallelGCFailedAllocation
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 08:07 1201464                            /home/chivu/Downloads/android-studio-p/jre/bin/java
+00600000-00601000 r--p 00000000 08:07 1201464                            /home/chivu/Downloads/android-studio-p/jre/bin/java
+00601000-00602000 rw-p 00001000 08:07 1201464                            /home/chivu/Downloads/android-studio-p/jre/bin/java
+00750000-00799000 rw-p 00000000 00:00 0                                  [heap]
+a0000000-b6c80000 rw-p 00000000 00:00 0 
+bf780000-e0000000 ---p 00000000 00:00 0 
+e0000000-fba80000 rw-p 00000000 00:00 0 
+fba80000-100000000 ---p 00000000 00:00 0 
+100000000-10076c000 rw-p 00000000 00:00 0 
+10076c000-140000000 ---p 00000000 00:00 0 
+7f1920000000-7f1920021000 rw-p 00000000 00:00 0 
+7f1920021000-7f1924000000 ---p 00000000 00:00 0 
+7f1928000000-7f1928021000 rw-p 00000000 00:00 0 
+7f1928021000-7f192c000000 ---p 00000000 00:00 0 
+7f192c000000-7f192c023000 rw-p 00000000 00:00 0 
+7f192c023000-7f1930000000 ---p 00000000 00:00 0 
+7f1930000000-7f19301a8000 rw-p 00000000 00:00 0 
+7f19301a8000-7f1934000000 ---p 00000000 00:00 0 
+7f1934000000-7f193403e000 rw-p 00000000 00:00 0 
+7f193403e000-7f1938000000 ---p 00000000 00:00 0 
+7f1938000000-7f193802e000 rw-p 00000000 00:00 0 
+7f193802e000-7f193c000000 ---p 00000000 00:00 0 
+7f193f325000-7f193f465000 rw-p 00000000 00:00 0 
+7f193f465000-7f193f525000 ---p 00000000 00:00 0 
+7f193f525000-7f193f528000 ---p 00000000 00:00 0 
+7f193f528000-7f193f626000 rw-p 00000000 00:00 0 
+7f193f626000-7f193f629000 ---p 00000000 00:00 0 
+7f193f629000-7f193f727000 rw-p 00000000 00:00 0 
+7f193f727000-7f193f72a000 ---p 00000000 00:00 0 
+7f193f72a000-7f193f828000 rw-p 00000000 00:00 0 
+7f193f828000-7f193f82b000 ---p 00000000 00:00 0 
+7f193f82b000-7f193f929000 rw-p 00000000 00:00 0 
+7f193f929000-7f193f92c000 ---p 00000000 00:00 0 
+7f193f92c000-7f193fa2a000 rw-p 00000000 00:00 0 
+7f193fa2a000-7f193faff000 r--s 0095c000 08:07 1200353                    /home/chivu/Desktop/newsApp/app/build/intermediates/transforms/jarMerging/debug/jars/1/1f/combined.jar
+7f193faff000-7f193fb02000 ---p 00000000 00:00 0 
+7f193fb02000-7f193fe00000 rw-p 00000000 00:00 0 
+7f193fe00000-7f1940000000 rw-p 00000000 00:00 0 
+7f1940000000-7f1940021000 rw-p 00000000 00:00 0 
+7f1940021000-7f1944000000 ---p 00000000 00:00 0 
+7f1944000000-7f1944021000 rw-p 00000000 00:00 0 
+7f1944021000-7f1948000000 ---p 00000000 00:00 0 
+7f1948000000-7f1948021000 rw-p 00000000 00:00 0 
+7f1948021000-7f194c000000 ---p 00000000 00:00 0 
+7f194c000000-7f194c021000 rw-p 00000000 00:00 0 
+7f194c021000-7f1950000000 ---p 00000000 00:00 0 
+7f1950000000-7f1950021000 rw-p 00000000 00:00 0 
+7f1950021000-7f1954000000 ---p 00000000 00:00 0 
+7f1954000000-7f1954021000 rw-p 00000000 00:00 0 
+7f1954021000-7f1958000000 ---p 00000000 00:00 0 
+7f1958000000-7f1958021000 rw-p 00000000 00:00 0 
+7f1958021000-7f195c000000 ---p 00000000 00:00 0 
+7f195c000000-7f195d1df000 rw-p 00000000 00:00 0 
+7f195d1df000-7f1960000000 ---p 00000000 00:00 0 
+7f1960000000-7f196002e000 rw-p 00000000 00:00 0 
+7f196002e000-7f1964000000 ---p 00000000 00:00 0 
+7f1964000000-7f1964058000 rw-p 00000000 00:00 0 
+7f1964058000-7f1968000000 ---p 00000000 00:00 0 
+7f1968000000-7f1968075000 rw-p 00000000 00:00 0 
+7f1968075000-7f196c000000 ---p 00000000 00:00 0 
+7f196c000000-7f196c021000 rw-p 00000000 00:00 0 
+7f196c021000-7f1970000000 ---p 00000000 00:00 0 
+7f1970022000-7f1970025000 ---p 00000000 00:00 0 
+7f1970025000-7f1970323000 rw-p 00000000 00:00 0 
+7f1970323000-7f1970523000 rw-p 00000000 00:00 0 
+7f1970523000-7f1970723000 rw-p 00000000 00:00 0 
+7f1970723000-7f1970736000 r--s 00344000 08:07 1201558                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/resources.jar
+7f1970736000-7f1970936000 rw-p 00000000 00:00 0 
+7f1970936000-7f1970b36000 rw-p 00000000 00:00 0 
+7f1970b36000-7f1970d36000 rw-p 00000000 00:00 0 
+7f1970d36000-7f1970f36000 rw-p 00000000 00:00 0 
+7f1970f36000-7f1970f39000 ---p 00000000 00:00 0 
+7f1970f39000-7f1971237000 rw-p 00000000 00:00 0 
+7f1971237000-7f1971238000 r--s 00001000 08:07 1094992                    /home/chivu/.gradle/caches/jars-2/cmhx5eetujk7j30d3nllwxyrlnugzjw/annotations-25.3.3.jar
+7f1971238000-7f1971240000 r--s 000a8000 08:07 932893                     /home/chivu/.gradle/caches/jars-2/lp0h431tl0554nh1vx6zomcvteflkp/lombok-ast-0.2.3.jar
+7f1971240000-7f1971254000 r--s 000b4000 08:07 139376                     /home/chivu/.gradle/caches/jars-2/hgvw6szzawm3evod5l2d6iutfug31w0/uast-162.2228.14.jar
+7f1971254000-7f1971256000 r--s 0000d000 08:07 932889                     /home/chivu/.gradle/caches/jars-2/7pwz1bowgakb1eux9ezb56jlturgsyi/commons-codec-1.4.jar
+7f1971256000-7f1971258000 r--s 0000d000 08:07 932887                     /home/chivu/.gradle/caches/jars-2/9dj1m0eyooi5qt13735vz8fpkl3cnfy/commons-logging-1.1.1.jar
+7f1971258000-7f197125d000 r--s 00028000 08:07 932885                     /home/chivu/.gradle/caches/jars-2/62lv0fe9b3xbqe57f6ljy5upwi7mf6k/httpcore-4.1.jar
+7f197125d000-7f1971261000 r--s 0002f000 08:07 932883                     /home/chivu/.gradle/caches/jars-2/gsg5n52frsvw6sx0swqqe2hwijwdcf0/jimfs-1.1.jar
+7f1971261000-7f1971262000 r--s 00004000 08:07 932881                     /home/chivu/.gradle/caches/jars-2/lxs252id0979odjrerlctkb26c2vj95/annotations-12.0.jar
+7f1971262000-7f1971263000 r--s 00004000 08:07 932879                     /home/chivu/.gradle/caches/jars-2/9kn99dr0rulyl67sct1ephwcop56l61/asm-analysis-5.0.4.jar
+7f1971263000-7f1971267000 r--s 00040000 08:07 1094991                    /home/chivu/.gradle/caches/jars-2/ccvn7yglm4blceovs70fngoac1eyn4f/lint-api-25.3.3.jar
+7f1971267000-7f1971268000 r--s 0000a000 08:07 932875                     /home/chivu/.gradle/caches/jars-2/nwyg9io65lv6jvmwit2wq82xnnxd7ia/kxml2-2.3.0.jar
+7f1971268000-7f197126a000 r--s 00005000 08:07 932873                     /home/chivu/.gradle/caches/jars-2/i6hc1uuj8e9ck59slmzdyz78ydn8sr6/httpmime-4.1.jar
+7f197126a000-7f1971272000 r--s 0004e000 08:07 932871                     /home/chivu/.gradle/caches/jars-2/7503wa5irssz0xxahv1xb82p2dl7rr2/httpclient-4.1.1.jar
+7f1971272000-7f1971279000 r--s 00053000 08:07 932869                     /home/chivu/.gradle/caches/jars-2/jgkfvs4eqggj7qsyw1f5d3up57hanj1/commons-compress-1.8.1.jar
+7f1971279000-7f197127e000 r--s 0002a000 08:07 932867                     /home/chivu/.gradle/caches/jars-2/je8f027qcr1z1egw08byp1ybxbp9kko/gson-2.2.4.jar
+7f197127e000-7f1971283000 r--s 0002e000 08:07 1094990                    /home/chivu/.gradle/caches/jars-2/s427p2wh0tfza0xa8qijgx107eeevyl/repository-25.3.3.jar
+7f1971283000-7f1971285000 r--s 00006000 08:07 1094989                    /home/chivu/.gradle/caches/jars-2/e2s952s6co8tps89l80r4riixwqo2oe/dvlib-25.3.3.jar
+7f1971285000-7f1971287000 r--s 00013000 08:07 1094883                    /home/chivu/.gradle/caches/jars-2/s02k517nvrh8cbp2c8dz4slqska6dj9/layoutlib-api-25.3.3.jar
+7f1971287000-7f197128c000 r--s 00058000 08:07 932859                     /home/chivu/.gradle/caches/jars-2/st159835qgxm0l87oqrnhayxos4lc1n/asm-debug-all-5.0.1.jar
+7f197128c000-7f197129c000 r--s 000d5000 08:07 932857                     /home/chivu/.gradle/caches/jars-2/qzf32gp9kej4w4hlbabft6tplu74cj3/proguard-base-5.3.2.jar
+7f197129c000-7f197129f000 r--s 00033000 08:07 932855                     /home/chivu/.gradle/caches/jars-2/nz9sndmr8b4xbj4xulkaciy5kdbyfiz/juniversalchardet-1.0.3.jar
+7f197129f000-7f19712a3000 r--s 0002a000 08:07 932853                     /home/chivu/.gradle/caches/jars-2/krbpn9xjn1qymukyx8cc5l799ty1v3h/commons-io-2.4.jar
+7f19712a3000-7f19712ba000 r--s 00154000 08:07 932851                     /home/chivu/.gradle/caches/jars-2/sfeivjswzitn6n0fnjx3ueszz8gv8o1/antlr4-4.5.3.jar
+7f19712ba000-7f19712bc000 r--s 00002000 08:07 1094881                    /home/chivu/.gradle/caches/jars-2/rh2ip1x2zziz26tr3qzudtz088pqsb2/baseLibrary-2.3.3.jar
+7f19712bc000-7f19712e7000 r--s 001fc000 08:07 932847                     /home/chivu/.gradle/caches/jars-2/nxjrjftly2xksl8o0wqgivu5netfu2x/guava-18.0.jar
+7f19712e7000-7f19712fa000 r--s 00241000 08:07 932845                     /home/chivu/.gradle/caches/jars-2/9yuekvg4qerfitq3xec0iyckuw3hwaq/ecj-4.6.1.jar
+7f19712fa000-7f1971301000 r--s 000d9000 08:07 1094862                    /home/chivu/.gradle/caches/jars-2/ak89aa8liqmr44u7r08njntn6oehe0z/lint-checks-25.3.3.jar
+7f1971301000-7f1971303000 r--s 00006000 08:07 932841                     /home/chivu/.gradle/caches/jars-2/6phgj9ki3jl3p5epzkqoo8pr6kur40b/asm-tree-5.0.4.jar
+7f1971303000-7f1971336000 r--s 00203000 08:07 932839                     /home/chivu/.gradle/caches/jars-2/hj0bfvxu9cq7hkwmecvp0kg137or3hh/bcprov-jdk15on-1.48.jar
+7f1971336000-7f1971344000 r--s 00081000 08:07 932837                     /home/chivu/.gradle/caches/jars-2/4r7xli0tz94y0wfjrdyjxlxar3g1pb9/bcpkix-jdk15on-1.48.jar
+7f1971344000-7f1971346000 r--s 00002000 08:07 932835                     /home/chivu/.gradle/caches/jars-2/f32bh5uivuf69ecz2j8hl96ksnqdh7v/javawriter-2.5.0.jar
+7f1971346000-7f1971348000 r--s 00004000 08:07 1094861                    /home/chivu/.gradle/caches/jars-2/j6s1upogkwo00sygdsekzj4fx0i75uy/tracker-25.3.3.jar
+7f1971348000-7f1971349000 r--s 00005000 08:07 1094860                    /home/chivu/.gradle/caches/jars-2/4svya0t1s9wyo35ycd3atidsaoo6w7e/shared-25.3.3.jar
+7f1971349000-7f1971357000 r--s 00147000 08:07 1094859                    /home/chivu/.gradle/caches/jars-2/qx6695c5ocd9swxv7wqtxor3plyb4b7/protos-25.3.3.jar
+7f1971357000-7f1971358000 r--s 00001000 08:07 139356                     /home/chivu/.gradle/caches/jars-2/bqo69msswbvaagsh45hf1tq02v21sml/jill-api-0.10.0.jar
+7f1971358000-7f197135a000 r--s 00003000 08:07 139354                     /home/chivu/.gradle/caches/jars-2/7pldadygbci34ql8thws797g29k1uhh/jack-api-0.13.0.jar
+7f197135a000-7f1971360000 r--s 0004a000 08:07 1094853                    /home/chivu/.gradle/caches/jars-2/euoqfzf5y1sibp9ul8mcz0wovj380eo/ddmlib-25.3.3.jar
+7f1971360000-7f1971363000 r--s 00022000 08:07 1094848                    /home/chivu/.gradle/caches/jars-2/a81bg2yxzmumashablwecaj0ksz6tmj/manifest-merger-25.3.3.jar
+7f1971363000-7f1971366000 r--s 0001c000 08:07 1094847                    /home/chivu/.gradle/caches/jars-2/l6cnyee1vojrkkbpp6qwgpf30shmrja/common-25.3.3.jar
+7f1971366000-7f197136f000 r--s 00089000 08:07 1094417                    /home/chivu/.gradle/caches/jars-2/m0t6h8af70sdgxvkj522jy01i14mnb8/sdk-common-25.3.3.jar
+7f197136f000-7f1971379000 r--s 00098000 08:07 1094415                    /home/chivu/.gradle/caches/jars-2/28c9ykhc782k8jmlrnbnccai34hziki/sdklib-25.3.3.jar
+7f1971379000-7f197137a000 r--s 00002000 08:07 1094389                    /home/chivu/.gradle/caches/jars-2/4dod7a1p5hoai4v37pxbcg65bbahvg2/builder-test-api-2.3.3.jar
+7f197137a000-7f197137d000 r--s 00006000 08:07 1094385                    /home/chivu/.gradle/caches/jars-2/omk02asobup8sgd6qxom3ej5bg94z2r/builder-model-2.3.3.jar
+7f197137d000-7f197138c000 r--s 00130000 08:07 932809                     /home/chivu/.gradle/caches/jars-2/cr6zkqpx14lor9zdtmo49qpc7y8r8p4/protobuf-java-3.0.0.jar
+7f197138c000-7f197138e000 r--s 0000f000 08:07 932807                     /home/chivu/.gradle/caches/jars-2/rvfyugrlu5tbpz51p98og0qsxamjq4k/jopt-simple-4.9.jar
+7f197138e000-7f1971392000 r--s 0001f000 08:07 932805                     /home/chivu/.gradle/caches/jars-2/nq3fzqkrrm37ob61z4iu5qdbh368uat/org.jacoco.report-0.7.5.201505241946.jar
+7f1971392000-7f1971396000 r--s 0001d000 08:07 932803                     /home/chivu/.gradle/caches/jars-2/3kxkmcckmk40ron92zhbm0qjo9l4bkl/org.jacoco.core-0.7.5.201505241946.jar
+7f1971396000-7f1971398000 r--s 00002000 08:07 932801                     /home/chivu/.gradle/caches/jars-2/m4m0pzb4gmaeh0in5g2xc4bxeuwt828/proguard-gradle-5.3.2.jar
+7f1971398000-7f197139a000 r--s 00009000 08:07 932799                     /home/chivu/.gradle/caches/jars-2/ajvcvdu66lc9e3tvvipxtuq48i9bbkc/asm-commons-5.0.4.jar
+7f197139a000-7f197139c000 r--s 0000c000 08:07 932797                     /home/chivu/.gradle/caches/jars-2/1laz1ygmxoc408r7nwqs1q8uk8r236d/asm-5.0.4.jar
+7f197139c000-7f19713a1000 r--s 0002c000 08:07 1094383                    /home/chivu/.gradle/caches/jars-2/3mlasgi8oo9o7oa12526198jui9zmp2/compilerCommon-2.3.3.jar
+7f19713a1000-7f19713a2000 r--s 00002000 08:07 1094379                    /home/chivu/.gradle/caches/jars-2/73l309uzm0ila7rdaaxteq0ng4ayf2y/gradle-api-2.3.3.jar
+7f19713a2000-7f19713a3000 r--s 00000000 08:07 139334                     /home/chivu/.gradle/caches/jars-2/tlyajppf8woug00g686fx5mchf8iv3o/transform-api-2.0.0-deprecated-use-gradle-api.jar
+7f19713a3000-7f19713a8000 r--s 0005e000 08:07 1094349                    /home/chivu/.gradle/caches/jars-2/k2xtosjt0in0zj7mpwvctw6iznt93uh/lint-25.3.3.jar
+7f19713a8000-7f19713be000 r--s 00163000 08:07 1094347                    /home/chivu/.gradle/caches/jars-2/nyg71b5n2lzymmwh5vbtmvjiby07k4g/builder-2.3.3.jar
+7f19713be000-7f19713dd000 r--s 001ca000 08:07 1094310                    /home/chivu/.gradle/caches/jars-2/5fwyvjq1ai8mdh1mluqxidj1wo7rls8/gradle-core-2.3.3.jar
+7f19713dd000-7f19713df000 r--s 00007000 08:07 266240                     /home/chivu/.gradle/caches/modules-2/files-2.1/com.google.gms/google-services/3.1.0/166ae4e6acd03b7bbebe221ffa54bc039fece1b9/google-services-3.1.0.jar
+7f19713df000-7f19713e1000 r--s 0000d000 08:07 1094266                    /home/chivu/.gradle/caches/jars-2/mel54vauze7hczg2p6nebauqz8s53sj/gradle-2.3.3.jar
+7f19713e1000-7f19715e1000 rw-p 00000000 00:00 0 
+7f19715e1000-7f19717e1000 rw-p 00000000 00:00 0 
+7f19717e1000-7f19717e4000 ---p 00000000 00:00 0 
+7f19717e4000-7f19718e2000 rw-p 00000000 00:00 0 
+7f19718e2000-7f19718e5000 ---p 00000000 00:00 0 
+7f19718e5000-7f197191b000 rw-p 00000000 00:00 0 
+7f197191b000-7f197191c000 r--p 00000000 00:00 0 
+7f197191c000-7f1971b1c000 rw-p 00000000 00:00 0 
+7f1971b1c000-7f1971d1c000 rw-p 00000000 00:00 0 
+7f1971d1c000-7f1971f1c000 rw-p 00000000 00:00 0 
+7f1971f1c000-7f197211c000 rw-p 00000000 00:00 0 
+7f197211c000-7f1972195000 r--s 010ed000 08:07 1201473                    /home/chivu/Downloads/android-studio-p/jre/lib/tools.jar
+7f1972195000-7f1972395000 rw-p 00000000 00:00 0 
+7f1972395000-7f1972398000 ---p 00000000 00:00 0 
+7f1972398000-7f1972496000 rw-p 00000000 00:00 0 
+7f1972496000-7f1972499000 ---p 00000000 00:00 0 
+7f1972499000-7f1972597000 rw-p 00000000 00:00 0 
+7f1972597000-7f197259a000 ---p 00000000 00:00 0 
+7f197259a000-7f1972698000 rw-p 00000000 00:00 0 
+7f1972698000-7f197269b000 ---p 00000000 00:00 0 
+7f197269b000-7f1972799000 rw-p 00000000 00:00 0 
+7f1972799000-7f197279c000 ---p 00000000 00:00 0 
+7f197279c000-7f1972a9a000 rw-p 00000000 00:00 0 
+7f1972a9a000-7f1972a9d000 ---p 00000000 00:00 0 
+7f1972a9d000-7f1972b9b000 rw-p 00000000 00:00 0 
+7f1972b9b000-7f1972b9e000 ---p 00000000 00:00 0 
+7f1972b9e000-7f1972c9c000 rw-p 00000000 00:00 0 
+7f1972c9c000-7f1972ca3000 r--s 00000000 08:07 1590595                    /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+7f1972ca3000-7f1972ea3000 rw-p 00000000 00:00 0 
+7f1972ea3000-7f1972ea6000 ---p 00000000 00:00 0 
+7f1972ea6000-7f1972fa4000 rw-p 00000000 00:00 0 
+7f1972fa4000-7f1972fad000 r-xp 00000000 08:07 1201548                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libmanagement.so
+7f1972fad000-7f19731ac000 ---p 00009000 08:07 1201548                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libmanagement.so
+7f19731ac000-7f19731ad000 r--p 00008000 08:07 1201548                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libmanagement.so
+7f19731ad000-7f19731ae000 rw-p 00009000 08:07 1201548                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libmanagement.so
+7f19731ae000-7f19731b3000 r--s 00098000 08:07 1201512                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/jsse.jar
+7f19731b3000-7f19731b5000 r--s 00007000 08:07 1189108                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-tooling-api-builders-3.3.jar
+7f19731b5000-7f19731b8000 r--s 00009000 08:07 1189101                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-testing-native-3.3.jar
+7f19731b8000-7f19731be000 r--s 00033000 08:07 1189176                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/snakeyaml-1.6.jar
+7f19731be000-7f19731c0000 r--s 00006000 08:07 1189175                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/jcommander-1.12.jar
+7f19731c0000-7f19731c5000 r--s 00040000 08:07 1189174                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/bsh-2.0b4.jar
+7f19731c5000-7f19731c7000 r--s 00009000 08:07 1189182                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/hamcrest-core-1.3.jar
+7f19731c7000-7f19731d0000 r--s 00089000 08:07 1189133                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/testng-6.3.1.jar
+7f19731d0000-7f19731d8000 r--s 00045000 08:07 1189132                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/junit-4.12.jar
+7f19731d8000-7f19731de000 r--s 0002e000 08:07 1189102                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-testing-jvm-3.3.jar
+7f19731de000-7f19731e2000 r--s 00016000 08:07 1189100                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-testing-base-3.3.jar
+7f19731e2000-7f19731e9000 r--s 00038000 08:07 1189127                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/bcpg-jdk15on-1.51.jar
+7f19731e9000-7f19731eb000 r--s 0000c000 08:07 1189079                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-signing-3.3.jar
+7f19731eb000-7f19731ed000 r--s 00007000 08:07 1189078                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-scala-3.3.jar
+7f19731ed000-7f19731ee000 r--s 00004000 08:07 1189106                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-resources-sftp-3.3.jar
+7f19731ee000-7f19731fe000 r--s 00088000 08:07 1189143                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/joda-time-2.8.2.jar
+7f19731fe000-7f197320f000 r--s 0010d000 08:07 1189142                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/jackson-databind-2.6.6.jar
+7f197320f000-7f1973212000 r--s 00009000 08:07 1189141                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/jackson-annotations-2.6.6.jar
+7f1973212000-7f1973216000 r--s 0003c000 08:07 1189140                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/jackson-core-2.6.6.jar
+7f1973216000-7f1973224000 r--s 00087000 08:07 1189139                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/aws-java-sdk-core-1.11.6.jar
+7f1973224000-7f197322b000 r--s 00057000 08:07 1189138                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/aws-java-sdk-kms-1.11.6.jar
+7f197322b000-7f1973238000 r--s 0008e000 08:07 1189137                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/aws-java-sdk-s3-1.11.6.jar
+7f1973238000-7f197323a000 r--s 00004000 08:07 1189107                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-resources-s3-3.3.jar
+7f197323a000-7f197323c000 r--s 00005000 08:07 1189131                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/jatl-0.2.2.jar
+7f197323c000-7f197323e000 r--s 0000f000 08:07 1189084                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-reporting-3.3.jar
+7f197323e000-7f1973240000 r--s 00002000 08:07 1189085                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-publish-3.3.jar
+7f1973240000-7f1973242000 r--s 00009000 08:07 1189114                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/commons-cli-1.2.jar
+7f1973242000-7f1973248000 r--s 00031000 08:07 1189070                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-plugins-3.3.jar
+7f1973248000-7f197324a000 r--s 00009000 08:07 1189103                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-plugin-development-3.3.jar
+7f197324a000-7f1973250000 r--s 0002b000 08:07 1189096                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-platform-play-3.3.jar
+7f1973250000-7f197325e000 r--s 00055000 08:07 1189095                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-platform-native-3.3.jar
+7f197325e000-7f1973263000 r--s 0001f000 08:07 1189090                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-platform-jvm-3.3.jar
+7f1973263000-7f197326b000 r--s 00027000 08:07 1189089                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-platform-base-3.3.jar
+7f197326b000-7f1973293000 r--s 0021c000 08:07 1189122                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/biz.aQute.bndlib-3.2.0.jar
+7f1973293000-7f1973295000 r--s 00003000 08:07 1189074                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-osgi-3.3.jar
+7f1973295000-7f1973298000 r--s 0000c000 08:07 1189125                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/pmaven-groovy-0.8-20100325.jar
+7f1973298000-7f1973299000 r--s 00004000 08:07 1189124                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/pmaven-common-0.8-20100325.jar
+7f1973299000-7f197329f000 r--s 00023000 08:07 1189075                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-maven-3.3.jar
+7f197329f000-7f19732a2000 r--s 0000b000 08:07 1189094                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-language-scala-3.3.jar
+7f19732a2000-7f19732a8000 r--s 0001a000 08:07 1189098                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-language-native-3.3.jar
+7f19732a8000-7f19732ab000 r--s 00005000 08:07 1189091                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-language-jvm-3.3.jar
+7f19732ab000-7f19732b1000 r--s 00027000 08:07 1189092                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-language-java-3.3.jar
+7f19732b1000-7f19732b3000 r--s 0000a000 08:07 1189093                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-language-groovy-3.3.jar
+7f19732b3000-7f19732b6000 r--s 0001e000 08:07 1189149                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/jsp-api-2.1-6.1.14.jar
+7f19732b6000-7f19732d9000 r--s 00344000 08:07 1189148                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/core-3.1.1.jar
+7f19732d9000-7f19732da000 r--s 00006000 08:07 1189147                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/jetty-naming-6.1.26.jar
+7f19732da000-7f19732db000 r--s 00002000 08:07 1189121                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/geronimo-annotation_1.0_spec-1.0.jar
+7f19732db000-7f19732dd000 r--s 00002000 08:07 1189120                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/jetty-annotations-6.1.26.jar
+7f19732dd000-7f19732ee000 r--s 000ea000 08:07 1189119                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/jsp-2.1-6.1.14.jar
+7f19732ee000-7f19732f0000 r--s 0000d000 08:07 1189118                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/jetty-plus-6.1.26.jar
+7f19732f0000-7f19732f2000 r--s 0001f000 08:07 1189117                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/servlet-api-2.5-20081211.jar
+7f19732f2000-7f19732f6000 r--s 00028000 08:07 1189116                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/jetty-util-6.1.26.jar
+7f19732f6000-7f19732fd000 r--s 0007d000 08:07 1189115                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/jetty-6.1.26.jar
+7f19732fd000-7f19732ff000 r--s 0000a000 08:07 1189072                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-jetty-3.3.jar
+7f19732ff000-7f1973306000 r--s 00035000 08:07 1189130                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/simple-4.1.21.jar
+7f1973306000-7f1973312000 r--s 00100000 08:07 1189128                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/rhino-1.7R3.jar
+7f1973312000-7f1973316000 r--s 00012000 08:07 1189081                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-javascript-3.3.jar
+7f1973316000-7f1973318000 r--s 0000d000 08:07 1189087                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-jacoco-3.3.jar
+7f1973318000-7f197331b000 r--s 0000e000 08:07 1189086                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-ivy-3.3.jar
+7f197331b000-7f197331c000 r--s 00002000 08:07 1189097                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-ide-play-3.3.jar
+7f197331c000-7f197331f000 r--s 00013000 08:07 1189099                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-ide-native-3.3.jar
+7f197331f000-7f1973328000 r--s 00055000 08:07 1189076                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-ide-3.3.jar
+7f1973328000-7f197332a000 r--s 00007000 08:07 1189080                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-ear-3.3.jar
+7f197332a000-7f1973330000 r--s 00039000 08:07 1189083                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-diagnostics-3.3.jar
+7f1973330000-7f1973334000 r--s 00023000 08:07 1189071                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-code-quality-3.3.jar
+7f1973334000-7f1973338000 r--s 00022000 08:07 1189088                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-build-init-3.3.jar
+7f1973338000-7f1973350000 r--s 00115000 08:07 1189179                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/xercesImpl-2.9.1.jar
+7f1973350000-7f1973366000 r-xp 00000000 08:07 529479                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f1973366000-7f1973565000 ---p 00016000 08:07 529479                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f1973565000-7f1973566000 rw-p 00015000 08:07 529479                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f1973566000-7f19736d8000 r-xp 00000000 08:07 1312856                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f19736d8000-7f19738d8000 ---p 00172000 08:07 1312856                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f19738d8000-7f19738e2000 r--p 00172000 08:07 1312856                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f19738e2000-7f19738e4000 rw-p 0017c000 08:07 1312856                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f19738e4000-7f19738e8000 rw-p 00000000 00:00 0 
+7f19738e8000-7f19738ed000 r-xp 00000000 08:07 932602                     /home/chivu/.gradle/native/23/linux-amd64/libnative-platform.so
+7f19738ed000-7f1973aec000 ---p 00005000 08:07 932602                     /home/chivu/.gradle/native/23/linux-amd64/libnative-platform.so
+7f1973aec000-7f1973aed000 rw-p 00004000 08:07 932602                     /home/chivu/.gradle/native/23/linux-amd64/libnative-platform.so
+7f1973aed000-7f1973afe000 r-xp 00000000 08:07 1201545                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libnio.so
+7f1973afe000-7f1973cfd000 ---p 00011000 08:07 1201545                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libnio.so
+7f1973cfd000-7f1973cfe000 r--p 00010000 08:07 1201545                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libnio.so
+7f1973cfe000-7f1973cff000 rw-p 00011000 08:07 1201545                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libnio.so
+7f1973cff000-7f1974000000 rw-p 00000000 00:00 0 
+7f1974000000-7f1974de6000 rw-p 00000000 00:00 0 
+7f1974de6000-7f1978000000 ---p 00000000 00:00 0 
+7f1978000000-7f1978021000 rw-p 00000000 00:00 0 
+7f1978021000-7f197c000000 ---p 00000000 00:00 0 
+7f197c000000-7f197dc99000 rw-p 00000000 00:00 0 
+7f197dc99000-7f1980000000 ---p 00000000 00:00 0 
+7f1980000000-7f1982463000 rw-p 00000000 00:00 0 
+7f1982463000-7f1984000000 ---p 00000000 00:00 0 
+7f1984000000-7f1984021000 rw-p 00000000 00:00 0 
+7f1984021000-7f1988000000 ---p 00000000 00:00 0 
+7f1988000000-7f1988021000 rw-p 00000000 00:00 0 
+7f1988021000-7f198c000000 ---p 00000000 00:00 0 
+7f198c000000-7f198c299000 rw-p 00000000 00:00 0 
+7f198c299000-7f1990000000 ---p 00000000 00:00 0 
+7f1990000000-7f1990021000 rw-p 00000000 00:00 0 
+7f1990021000-7f1994000000 ---p 00000000 00:00 0 
+7f1994000000-7f199413f000 rw-p 00000000 00:00 0 
+7f199413f000-7f1998000000 ---p 00000000 00:00 0 
+7f1998000000-7f1998122000 rw-p 00000000 00:00 0 
+7f1998122000-7f199c000000 ---p 00000000 00:00 0 
+7f199c000000-7f199c04c000 rw-p 00000000 00:00 0 
+7f199c04c000-7f19a0000000 ---p 00000000 00:00 0 
+7f19a0000000-7f19a0001000 r--s 00009000 08:07 1189109                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-composite-builds-3.3.jar
+7f19a0001000-7f19a0007000 r--s 0008e000 08:07 1189082                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-build-comparison-3.3.jar
+7f19a0007000-7f19a0008000 r--s 00001000 08:07 1189110                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-build-cache-http-3.3.jar
+7f19a0008000-7f19a000a000 r--s 00008000 08:07 1189073                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-antlr-3.3.jar
+7f19a000a000-7f19a000c000 r--s 00004000 08:07 1189077                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-announce-3.3.jar
+7f19a000c000-7f19a0014000 r--s 00028000 08:07 1189180                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/xml-apis-1.3.04.jar
+7f19a0014000-7f19a001a000 r--s 0005b000 08:07 1189178                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/jcifs-1.3.17.jar
+7f19a001a000-7f19a0020000 r--s 00033000 08:07 1189126                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/commons-codec-1.6.jar
+7f19a0020000-7f19a0027000 r--s 00049000 08:07 1189177                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/httpcore-4.4.4.jar
+7f19a0027000-7f19a002a000 r--s 0001c000 08:07 1189135                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/nekohtml-1.9.14.jar
+7f19a002a000-7f19a0037000 r--s 000a4000 08:07 1189134                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/httpclient-4.4.1.jar
+7f19a0037000-7f19a003a000 r--s 0000a000 08:07 1189105                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-resources-http-3.3.jar
+7f19a003a000-7f19a003e000 r--s 00015000 08:07 1189104                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-plugin-use-3.3.jar
+7f19a003e000-7f19a003f000 r--s 00000000 08:07 1189016                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-installation-beacon-3.3.jar
+7f19a003f000-7f19a0041000 r--s 00006000 08:07 1189173                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/aether-connector-wagon-1.13.1.jar
+7f19a0041000-7f19a0045000 r--s 0001c000 08:07 1189172                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/aether-util-1.13.1.jar
+7f19a0045000-7f19a0046000 r--s 00003000 08:07 1189171                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/aether-spi-1.13.1.jar
+7f19a0046000-7f19a0049000 r--s 0001d000 08:07 1189170                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/aether-impl-1.13.1.jar
+7f19a0049000-7f19a004c000 r--s 00013000 08:07 1189169                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/aether-api-1.13.1.jar
+7f19a004c000-7f19a004d000 r--s 00007000 08:07 1189168                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/wagon-http-shared4-2.4.jar
+7f19a004d000-7f19a004f000 r--s 0000b000 08:07 1189167                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/wagon-provider-api-2.4.jar
+7f19a004f000-7f19a0050000 r--s 00002000 08:07 1189166                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/wagon-http-2.4.jar
+7f19a0050000-7f19a0051000 r--s 00002000 08:07 1189165                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/wagon-file-2.4.jar
+7f19a0051000-7f19a0053000 r--s 0000c000 08:07 1189164                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/maven-aether-provider-3.0.4.jar
+7f19a0053000-7f19a0055000 r--s 0000b000 08:07 1189163                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/maven-plugin-api-3.0.4.jar
+7f19a0055000-7f19a0057000 r--s 00006000 08:07 1189162                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/maven-repository-metadata-3.0.4.jar
+7f19a0057000-7f19a0059000 r--s 0000b000 08:07 1189161                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/maven-artifact-3.0.4.jar
+7f19a0059000-7f19a005b000 r--s 00026000 08:07 1189160                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/maven-model-3.0.4.jar
+7f19a005b000-7f19a005f000 r--s 00021000 08:07 1189159                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/maven-model-builder-3.0.4.jar
+7f19a005f000-7f19a0065000 r--s 0003f000 08:07 1189158                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/maven-compat-3.0.4.jar
+7f19a0065000-7f19a0066000 r--s 00006000 08:07 1189157                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/plexus-sec-dispatcher-1.3.jar
+7f19a0066000-7f19a0068000 r--s 00002000 08:07 1189156                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/plexus-cipher-1.7.jar
+7f19a0068000-7f19a006a000 r--s 0000a000 08:07 1189155                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/plexus-classworlds-2.4.jar
+7f19a006a000-7f19a0071000 r--s 0002e000 08:07 1189154                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/plexus-container-default-1.5.5.jar
+7f19a0071000-7f19a0073000 r--s 00000000 08:07 1189181                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/plexus-component-annotations-1.5.5.jar
+7f19a0073000-7f19a0075000 r--s 0000d000 08:07 1189153                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/plexus-interpolation-1.14.jar
+7f19a0075000-7f19a0079000 r--s 00033000 08:07 1189152                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/plexus-utils-2.0.6.jar
+7f19a0079000-7f19a007c000 r--s 00008000 08:07 1189151                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/maven-settings-builder-3.0.4.jar
+7f19a007c000-7f19a007e000 r--s 0000a000 08:07 1189150                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/maven-settings-3.0.4.jar
+7f19a007e000-7f19a0083000 r--s 00040000 08:07 1189136                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/jsch-0.1.53.jar
+7f19a0083000-7f19a00c3000 r--s 00277000 08:07 1189146                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/bcprov-jdk15on-1.51.jar
+7f19a00c3000-7f19a00c7000 r--s 0001d000 08:07 1189145                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/xbean-reflect-3.4.jar
+7f19a00c7000-7f19a00d3000 r--s 0007d000 08:07 1189123                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/maven-core-3.0.4.jar
+7f19a00d3000-7f19a00d8000 r--s 00034000 08:07 1189129                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gson-2.7.jar
+7f19a00d8000-7f19a00e7000 r--s 000d9000 08:07 1189144                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/ivy-2.2.0.jar
+7f19a00e7000-7f19a0106000 r--s 000f6000 08:07 1189112                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-dependency-management-3.3.jar
+7f19a0106000-7f19a0108000 r--s 00005000 08:07 1189111                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/plugins/gradle-workers-3.3.jar
+7f19a0108000-7f19a011f000 r-xp 00000000 08:07 1201544                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libnet.so
+7f19a011f000-7f19a031e000 ---p 00017000 08:07 1201544                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libnet.so
+7f19a031e000-7f19a031f000 r--p 00016000 08:07 1201544                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libnet.so
+7f19a031f000-7f19a0320000 rw-p 00017000 08:07 1201544                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libnet.so
+7f19a0320000-7f19a032d000 r--s 00041000 08:07 1189022                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-tooling-api-3.3.jar
+7f19a032d000-7f19a032f000 r--s 00002000 08:07 1189042                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-open-api-3.3.jar
+7f19a032f000-7f19a0335000 r--s 00032000 08:07 1189044                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/jaxen-1.1.jar
+7f19a0335000-7f19a033a000 r--s 00048000 08:07 1189043                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/dom4j-1.6.1.jar
+7f19a033a000-7f19a0345000 r--s 00059000 08:07 1189021                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-ui-3.3.jar
+7f19a0345000-7f19a034e000 r--s 0008c000 08:07 1189013                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/kotlin-stdlib-1.1-M02.jar
+7f19a034e000-7f19a0382000 r--s 00256000 08:07 1189011                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/kotlin-reflect-1.1-M02.jar
+7f19a0382000-7f19a0518000 r--s 0157e000 08:07 1189010                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/kotlin-compiler-embeddable-1.1-M02.jar
+7f19a0518000-7f19a0520000 r--s 0004e000 08:07 1189009                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-script-kotlin-0.5.1.jar
+7f19a0520000-7f19a0521000 ---p 00000000 00:00 0 
+7f19a0521000-7f19a0621000 rw-p 00000000 00:00 0 
+7f19a0621000-7f19a0624000 ---p 00000000 00:00 0 
+7f19a0624000-7f19a0722000 rw-p 00000000 00:00 0 
+7f19a0722000-7f19a0725000 ---p 00000000 00:00 0 
+7f19a0725000-7f19a0823000 rw-p 00000000 00:00 0 
+7f19a0823000-7f19a0826000 ---p 00000000 00:00 0 
+7f19a0826000-7f19a0924000 rw-p 00000000 00:00 0 
+7f19a0924000-7f19a0927000 ---p 00000000 00:00 0 
+7f19a0927000-7f19a0a25000 rw-p 00000000 00:00 0 
+7f19a0a25000-7f19a0a28000 ---p 00000000 00:00 0 
+7f19a0a28000-7f19a0b26000 rw-p 00000000 00:00 0 
+7f19a0b26000-7f19a0dfe000 r--p 00000000 08:07 1311727                    /usr/lib/locale/locale-archive
+7f19a0dfe000-7f19a0e01000 ---p 00000000 00:00 0 
+7f19a0e01000-7f19a0eff000 rw-p 00000000 00:00 0 
+7f19a0eff000-7f19a0f02000 ---p 00000000 00:00 0 
+7f19a0f02000-7f19a4000000 rw-p 00000000 00:00 0 
+7f19a4000000-7f19a4028000 rw-p 00000000 00:00 0 
+7f19a4028000-7f19a8000000 ---p 00000000 00:00 0 
+7f19a8000000-7f19a8001000 r--s 00006000 08:07 1189015                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-wrapper-3.3.jar
+7f19a8001000-7f19a8007000 r--s 0002a000 08:07 1189012                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/kotlin-runtime-1.1-M02.jar
+7f19a8007000-7f19a800a000 r--s 0000b000 08:07 1189040                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-resources-3.3.jar
+7f19a800a000-7f19a800c000 r--s 00003000 08:07 1189049                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/jcl-over-slf4j-1.7.10.jar
+7f19a800c000-7f19a800d000 r--s 00005000 08:07 1189048                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/log4j-over-slf4j-1.7.10.jar
+7f19a800d000-7f19a800f000 r--s 00000000 08:07 1189047                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/jul-to-slf4j-1.7.10.jar
+7f19a800f000-7f19a8014000 r--s 0001e000 08:07 1189024                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-logging-3.3.jar
+7f19a8014000-7f19a8016000 r--s 00007000 08:07 1189068                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/objenesis-1.2.jar
+7f19a8016000-7f19a8018000 r--s 00000000 08:07 1189067                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/minlog-1.2.jar
+7f19a8018000-7f19a801a000 r--s 0000f000 08:07 1189066                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/reflectasm-1.07-shaded.jar
+7f19a801a000-7f19a801e000 r--s 00026000 08:07 1189051                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/kryo-2.20.jar
+7f19a801e000-7f19a8024000 r--s 00027000 08:07 1189039                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-messaging-3.3.jar
+7f19a8024000-7f19a8025000 r--s 00001000 08:07 1189065                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/native-platform-linux-i386-ncurses6-0.12.jar
+7f19a8025000-7f19a8026000 r--s 00001000 08:07 1189064                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/native-platform-linux-i386-ncurses5-0.12.jar
+7f19a8026000-7f19a8027000 r--s 00001000 08:07 1189063                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/native-platform-linux-amd64-ncurses6-0.12.jar
+7f19a8027000-7f19a8028000 r--s 00001000 08:07 1189062                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/native-platform-linux-amd64-ncurses5-0.12.jar
+7f19a8028000-7f19a8029000 r--s 0000b000 08:07 1189061                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/native-platform-windows-i386-0.12.jar
+7f19a8029000-7f19a802b000 r--s 0000b000 08:07 1189060                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/native-platform-windows-amd64-0.12.jar
+7f19a802b000-7f19a802d000 r--s 00002000 08:07 1189059                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/native-platform-osx-i386-0.12.jar
+7f19a802d000-7f19a802e000 r--s 00002000 08:07 1189058                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/native-platform-osx-amd64-0.12.jar
+7f19a802e000-7f19a802f000 r--s 00002000 08:07 1189057                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/native-platform-linux-i386-0.12.jar
+7f19a802f000-7f19a8030000 r--s 00002000 08:07 1189056                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/native-platform-linux-amd64-0.12.jar
+7f19a8030000-7f19a8031000 r--s 00003000 08:07 1189055                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/native-platform-freebsd-i386-libstdcpp-0.12.jar
+7f19a8031000-7f19a8033000 r--s 00003000 08:07 1189053                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/native-platform-freebsd-amd64-libstdcpp-0.12.jar
+7f19a8033000-7f19a8036000 r--s 00023000 08:07 1189046                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/jansi-1.14.jar
+7f19a8036000-7f19a803a000 r--s 00011000 08:07 1189045                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/native-platform-0.12.jar
+7f19a803a000-7f19a803d000 r--s 0000a000 08:07 1189023                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-native-3.3.jar
+7f19a803d000-7f19a804c000 r--s 0007f000 08:07 1189030                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-model-core-3.3.jar
+7f19a804c000-7f19a8059000 r--s 00083000 08:07 1189034                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/commons-collections-3.2.2.jar
+7f19a8059000-7f19a80c9000 r--s 00641000 08:07 1189029                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/groovy-all-2.4.7.jar
+7f19a80c9000-7f19a80f1000 r--s 001cf000 08:07 1189026                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/guava-jdk5-17.0.jar
+7f19a80f1000-7f19a80f2000 ---p 00000000 00:00 0 
+7f19a80f2000-7f19a9000000 rw-p 00000000 00:00 0 
+7f19a9000000-7f19aadc0000 rwxp 00000000 00:00 0 
+7f19aadc0000-7f19b8000000 ---p 00000000 00:00 0 
+7f19b8000000-7f19b8c6a000 rw-p 00000000 00:00 0 
+7f19b8c6a000-7f19bc000000 ---p 00000000 00:00 0 
+7f19bc000000-7f19bc001000 r--s 00004000 08:07 1189054                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/native-platform-freebsd-i386-libcpp-0.12.jar
+7f19bc001000-7f19bc002000 r--s 00004000 08:07 1189052                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/native-platform-freebsd-amd64-libcpp-0.12.jar
+7f19bc002000-7f19bc004000 r--s 00005000 08:07 1189020                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-cli-3.3.jar
+7f19bc004000-7f19bc006000 r--s 00007000 08:07 1189031                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-model-groovy-3.3.jar
+7f19bc006000-7f19bc008000 r--s 00006000 08:07 1189038                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-base-services-groovy-3.3.jar
+7f19bc008000-7f19bc009000 r--s 00002000 08:07 1189041                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-docs-3.3.jar
+7f19bc009000-7f19bc028000 r--s 001d1000 08:07 1189033                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/ant-1.9.6.jar
+7f19bc028000-7f19bc065000 r--s 001f8000 08:07 1189019                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-core-3.3.jar
+7f19bc065000-7f19bc238000 rw-p 00000000 00:00 0 
+7f19bc238000-7f19bc407000 r--s 03c1b000 08:07 1201515                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/rt.jar
+7f19bc407000-7f19bcf7d000 rw-p 00000000 00:00 0 
+7f19bcf7d000-7f19bcf7e000 ---p 00000000 00:00 0 
+7f19bcf7e000-7f19bd07e000 rw-p 00000000 00:00 0 
+7f19bd07e000-7f19bd07f000 ---p 00000000 00:00 0 
+7f19bd07f000-7f19bd17f000 rw-p 00000000 00:00 0 
+7f19bd17f000-7f19bd180000 ---p 00000000 00:00 0 
+7f19bd180000-7f19bd280000 rw-p 00000000 00:00 0 
+7f19bd280000-7f19bd281000 ---p 00000000 00:00 0 
+7f19bd281000-7f19bd438000 rw-p 00000000 00:00 0 
+7f19bd438000-7f19bd581000 ---p 00000000 00:00 0 
+7f19bd581000-7f19bd638000 rw-p 00000000 00:00 0 
+7f19bd638000-7f19bd781000 ---p 00000000 00:00 0 
+7f19bd781000-7f19bd85f000 rw-p 00000000 00:00 0 
+7f19bd85f000-7f19bd881000 ---p 00000000 00:00 0 
+7f19bd881000-7f19bd8f9000 rw-p 00000000 00:00 0 
+7f19bd8f9000-7f19bdc42000 ---p 00000000 00:00 0 
+7f19bdc42000-7f19bdc5c000 r-xp 00000000 08:07 1201530                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libzip.so
+7f19bdc5c000-7f19bde5c000 ---p 0001a000 08:07 1201530                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libzip.so
+7f19bde5c000-7f19bde5d000 r--p 0001a000 08:07 1201530                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libzip.so
+7f19bde5d000-7f19bde5e000 rw-p 0001b000 08:07 1201530                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libzip.so
+7f19bde5e000-7f19bde69000 r-xp 00000000 08:07 541944                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f19bde69000-7f19be068000 ---p 0000b000 08:07 541944                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f19be068000-7f19be069000 r--p 0000a000 08:07 541944                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f19be069000-7f19be06a000 rw-p 0000b000 08:07 541944                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f19be06a000-7f19be070000 rw-p 00000000 00:00 0 
+7f19be070000-7f19be07b000 r-xp 00000000 08:07 541937                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f19be07b000-7f19be27a000 ---p 0000b000 08:07 541937                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f19be27a000-7f19be27b000 r--p 0000a000 08:07 541937                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f19be27b000-7f19be27c000 rw-p 0000b000 08:07 541937                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f19be27c000-7f19be292000 r-xp 00000000 08:07 541939                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f19be292000-7f19be491000 ---p 00016000 08:07 541939                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f19be491000-7f19be492000 r--p 00015000 08:07 541939                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f19be492000-7f19be493000 rw-p 00016000 08:07 541939                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f19be493000-7f19be495000 rw-p 00000000 00:00 0 
+7f19be495000-7f19be49d000 r-xp 00000000 08:07 541946                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f19be49d000-7f19be69c000 ---p 00008000 08:07 541946                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f19be69c000-7f19be69d000 r--p 00007000 08:07 541946                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f19be69d000-7f19be69e000 rw-p 00008000 08:07 541946                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f19be69e000-7f19be6cb000 r-xp 00000000 08:07 1201547                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libjava.so
+7f19be6cb000-7f19be8ca000 ---p 0002d000 08:07 1201547                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libjava.so
+7f19be8ca000-7f19be8cb000 r--p 0002c000 08:07 1201547                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libjava.so
+7f19be8cb000-7f19be8cd000 rw-p 0002d000 08:07 1201547                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libjava.so
+7f19be8cd000-7f19be8dd000 r-xp 00000000 08:07 1201520                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libverify.so
+7f19be8dd000-7f19beadc000 ---p 00010000 08:07 1201520                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libverify.so
+7f19beadc000-7f19beade000 r--p 0000f000 08:07 1201520                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libverify.so
+7f19beade000-7f19beadf000 rw-p 00011000 08:07 1201520                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/libverify.so
+7f19beadf000-7f19beae6000 r-xp 00000000 08:07 541947                     /lib/x86_64-linux-gnu/librt-2.23.so
+7f19beae6000-7f19bece5000 ---p 00007000 08:07 541947                     /lib/x86_64-linux-gnu/librt-2.23.so
+7f19bece5000-7f19bece6000 r--p 00006000 08:07 541947                     /lib/x86_64-linux-gnu/librt-2.23.so
+7f19bece6000-7f19bece7000 rw-p 00007000 08:07 541947                     /lib/x86_64-linux-gnu/librt-2.23.so
+7f19bece7000-7f19bedef000 r-xp 00000000 08:07 541938                     /lib/x86_64-linux-gnu/libm-2.23.so
+7f19bedef000-7f19befee000 ---p 00108000 08:07 541938                     /lib/x86_64-linux-gnu/libm-2.23.so
+7f19befee000-7f19befef000 r--p 00107000 08:07 541938                     /lib/x86_64-linux-gnu/libm-2.23.so
+7f19befef000-7f19beff0000 rw-p 00108000 08:07 541938                     /lib/x86_64-linux-gnu/libm-2.23.so
+7f19beff0000-7f19bfbe1000 r-xp 00000000 08:07 1201528                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/server/libjvm.so
+7f19bfbe1000-7f19bfde1000 ---p 00bf1000 08:07 1201528                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/server/libjvm.so
+7f19bfde1000-7f19bfe80000 r--p 00bf1000 08:07 1201528                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/server/libjvm.so
+7f19bfe80000-7f19bfea9000 rw-p 00c90000 08:07 1201528                    /home/chivu/Downloads/android-studio-p/jre/jre/lib/amd64/server/libjvm.so
+7f19bfea9000-7f19bfeed000 rw-p 00000000 00:00 0 
+7f19bfeed000-7f19bff05000 r-xp 00000000 08:07 541951                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f19bff05000-7f19c0104000 ---p 00018000 08:07 541951                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f19c0104000-7f19c0105000 r--p 00017000 08:07 541951                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f19c0105000-7f19c0106000 rw-p 00018000 08:07 541951                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f19c0106000-7f19c010a000 rw-p 00000000 00:00 0 
+7f19c010a000-7f19c010d000 r-xp 00000000 08:07 541936                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7f19c010d000-7f19c030c000 ---p 00003000 08:07 541936                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7f19c030c000-7f19c030d000 r--p 00002000 08:07 541936                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7f19c030d000-7f19c030e000 rw-p 00003000 08:07 541936                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7f19c030e000-7f19c04cd000 r-xp 00000000 08:07 541940                     /lib/x86_64-linux-gnu/libc-2.23.so
+7f19c04cd000-7f19c06cd000 ---p 001bf000 08:07 541940                     /lib/x86_64-linux-gnu/libc-2.23.so
+7f19c06cd000-7f19c06d1000 r--p 001bf000 08:07 541940                     /lib/x86_64-linux-gnu/libc-2.23.so
+7f19c06d1000-7f19c06d3000 rw-p 001c3000 08:07 541940                     /lib/x86_64-linux-gnu/libc-2.23.so
+7f19c06d3000-7f19c06d7000 rw-p 00000000 00:00 0 
+7f19c06d7000-7f19c06ed000 r-xp 00000000 08:07 1201477                    /home/chivu/Downloads/android-studio-p/jre/lib/amd64/jli/libjli.so
+7f19c06ed000-7f19c08ec000 ---p 00016000 08:07 1201477                    /home/chivu/Downloads/android-studio-p/jre/lib/amd64/jli/libjli.so
+7f19c08ec000-7f19c08ed000 r--p 00015000 08:07 1201477                    /home/chivu/Downloads/android-studio-p/jre/lib/amd64/jli/libjli.so
+7f19c08ed000-7f19c08ee000 rw-p 00016000 08:07 1201477                    /home/chivu/Downloads/android-studio-p/jre/lib/amd64/jli/libjli.so
+7f19c08ee000-7f19c0914000 r-xp 00000000 08:07 541941                     /lib/x86_64-linux-gnu/ld-2.23.so
+7f19c0914000-7f19c0915000 r--s 00000000 08:07 1189037                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/javax.inject-1.jar
+7f19c0915000-7f19c0916000 r--s 00000000 08:07 1189036                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/jcip-annotations-1.0.jar
+7f19c0916000-7f19c091a000 r--s 00027000 08:07 1189035                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/commons-io-2.2.jar
+7f19c091a000-7f19c091f000 r--s 00038000 08:07 1189032                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/asm-all-5.1.jar
+7f19c091f000-7f19c0920000 r--s 00001000 08:07 1189028                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-process-services-3.3.jar
+7f19c0920000-7f19c0925000 r--s 00041000 08:07 1189027                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/commons-lang-2.6.jar
+7f19c0925000-7f19c092e000 r--s 00042000 08:07 1189017                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-base-services-3.3.jar
+7f19c092e000-7f19c09f0000 rw-p 00000000 00:00 0 
+7f19c09f0000-7f19c09f3000 ---p 00000000 00:00 0 
+7f19c09f3000-7f19c0af5000 rw-p 00000000 00:00 0 
+7f19c0af5000-7f19c0af7000 r--s 00000000 08:07 1189018                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-jvm-services-3.3.jar
+7f19c0af7000-7f19c0af8000 r--s 00000000 08:07 1189183                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-version-info-3.3.jar
+7f19c0af8000-7f19c0af9000 r--s 00007000 08:07 1189025                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/slf4j-api-1.7.10.jar
+7f19c0af9000-7f19c0afa000 r--s 00004000 08:07 1189050                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/ant-launcher-1.9.6.jar
+7f19c0afa000-7f19c0b07000 r--s 0005c000 08:07 1189014                    /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-launcher-3.3.jar
+7f19c0b07000-7f19c0b0f000 rw-s 00000000 08:07 266273                     /tmp/hsperfdata_chivu/4359
+7f19c0b0f000-7f19c0b10000 rw-p 00000000 00:00 0 
+7f19c0b10000-7f19c0b11000 ---p 00000000 00:00 0 
+7f19c0b11000-7f19c0b13000 rw-p 00000000 00:00 0 
+7f19c0b13000-7f19c0b14000 r--p 00025000 08:07 541941                     /lib/x86_64-linux-gnu/ld-2.23.so
+7f19c0b14000-7f19c0b15000 rw-p 00026000 08:07 541941                     /lib/x86_64-linux-gnu/ld-2.23.so
+7f19c0b15000-7f19c0b16000 rw-p 00000000 00:00 0 
+7ffffbf7a000-7ffffbf9b000 rw-p 00000000 00:00 0                          [stack]
+7ffffbfb6000-7ffffbfb8000 r--p 00000000 00:00 0                          [vvar]
+7ffffbfb8000-7ffffbfba000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Xmx1536m -Dfile.encoding=UTF-8 -Duser.country=IN -Duser.language=en -Duser.variant 
+java_command: org.gradle.launcher.daemon.bootstrap.GradleDaemon 3.3
+java_class_path (initial): /home/chivu/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/lib/gradle-launcher-3.3.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/usr/lib/jvm/java-8-oracle
+PATH=/home/chivu/bin:/home/chivu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+LD_LIBRARY_PATH=/home/chivu/Downloads/android-studio-p/bin:
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x9e5150], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0x9e5150], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x848450], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x848450], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x848450], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x848450], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x848320], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x848510], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x848510], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x848510], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x848510], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=16.04
+DISTRIB_CODENAME=xenial
+DISTRIB_DESCRIPTION="Ubuntu 16.04.2 LTS"
+
+uname:Linux 4.4.0-79-generic #100-Ubuntu SMP Wed May 17 19:58:14 UTC 2017 x86_64
+libc:glibc 2.23 NPTL 2.23 
+rlimit: STACK 8192k, CORE 0k, NPROC 15361, NOFILE 65536, AS infinity
+load average:5.37 3.72 3.10
+
+/proc/meminfo:
+MemTotal:        3972820 kB
+MemFree:          111128 kB
+MemAvailable:      58352 kB
+Buffers:            8588 kB
+Cached:           341048 kB
+SwapCached:          200 kB
+Active:          2640240 kB
+Inactive:        1052216 kB
+Active(anon):    2591884 kB
+Inactive(anon):  1006456 kB
+Active(file):      48356 kB
+Inactive(file):    45760 kB
+Unevictable:         136 kB
+Mlocked:             136 kB
+SwapTotal:          1020 kB
+SwapFree:              0 kB
+Dirty:              1824 kB
+Writeback:             0 kB
+AnonPages:       3343792 kB
+Mapped:           121644 kB
+Shmem:            254656 kB
+Slab:              79680 kB
+SReclaimable:      45332 kB
+SUnreclaim:        34348 kB
+KernelStack:       10016 kB
+PageTables:        34956 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1987428 kB
+Committed_AS:    7434632 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:   1288192 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      137984 kB
+DirectMap2M:     3983360 kB
+DirectMap1G:     1048576 kB
+
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 69 stepping 1, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 69
+model name	: Intel(R) Core(TM) i3-4030U CPU @ 1.90GHz
+stepping	: 1
+microcode	: 0x1d
+cpu MHz		: 1513.320
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm epb tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm arat pln pts
+bugs		:
+bogomips	: 3791.34
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 69
+model name	: Intel(R) Core(TM) i3-4030U CPU @ 1.90GHz
+stepping	: 1
+microcode	: 0x1d
+cpu MHz		: 1299.792
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm epb tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm arat pln pts
+bugs		:
+bogomips	: 3791.34
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 69
+model name	: Intel(R) Core(TM) i3-4030U CPU @ 1.90GHz
+stepping	: 1
+microcode	: 0x1d
+cpu MHz		: 1799.953
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm epb tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm arat pln pts
+bugs		:
+bogomips	: 3791.34
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 69
+model name	: Intel(R) Core(TM) i3-4030U CPU @ 1.90GHz
+stepping	: 1
+microcode	: 0x1d
+cpu MHz		: 1473.019
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm epb tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm arat pln pts
+bugs		:
+bogomips	: 3791.34
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 3972820k(111128k free), swap 1020k(0k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.112-b06) for linux-amd64 JRE (1.8.0_112-release-b06), built on Dec  6 2016 12:11:18 by "builder" with gcc 4.8.4
+
+time: Mon Jul 17 10:07:02 2017
+elapsed time: 62 seconds (0d 0h 1m 2s)
+

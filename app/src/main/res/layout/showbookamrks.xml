@@ -1,0 +1,68 @@
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/_1sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v7.widget.CardView
+android:id="@+id/cardd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_2sdp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fetch_image_title"
+                android:textColor="#000000"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"
+                android:padding="@dimen/_4sdp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:background="#000000"
+                android:scaleType="centerCrop"
+                android:layout_below="@+id/fetch_image_title"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:id="@+id/fetch_image"
+                android:layout_height="@dimen/_200sdp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fetch_description"
+                android:textColor="#000000"
+                android:padding="@dimen/_4sdp"
+                android:textSize="@dimen/_13sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_below="@+id/fetch_image"/>
+
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_alignParentLeft="true"
+                android:textSize="@dimen/_12sdp"
+                android:layout_below="@+id/fetch_description"
+                android:padding="@dimen/_5sdp"
+                />
+
+            <ImageView
+                android:id="@+id/btn_delete"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+              android:layout_alignParentRight="true"
+                android:layout_below="@+id/fetch_description"
+
+                android:padding="@dimen/_5sdp"
+                app:srcCompat="@android:drawable/ic_menu_delete" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+</RelativeLayout>

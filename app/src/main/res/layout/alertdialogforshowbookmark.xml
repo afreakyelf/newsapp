@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="@dimen/_140sdp"
+    android:background="#ffffff"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:text="Alert"
+
+        android:textSize="@dimen/_20sdp"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:id="@+id/message"
+        android:padding="@dimen/_2sdp"
+        android:background="#27272b"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/alertmessage"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/message"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:textSize="@dimen/_15sdp"
+        android:textColor="#080606"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/alertmessage"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_35sdp">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_now"
+            android:text="Yes"
+            android:textColor="#432626"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:background="#9a9a9b"
+            android:layout_gravity="bottom"
+            />
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:background="#27272b"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/cancel_action"
+            android:text="no"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:textColor="#432626"
+            android:background="#9a9a9b"
+            android:layout_gravity="bottom"
+            />
+    </LinearLayout>
+
+</RelativeLayout>
